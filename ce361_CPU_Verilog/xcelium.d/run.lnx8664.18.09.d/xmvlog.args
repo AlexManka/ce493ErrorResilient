@@ -54,10 +54,12 @@
 ./cpu/IF_ID_reg.v
 ./cpu/iunit.v
 ./cpu/MEM_WR_reg.v
+./cpu/razorflipflop.v
+./cpu/razor_reg_32.v
+./cpu/razor_reg_file.v
 ./cpu/reg_32.v
 ./cpu/reg_file.v
 ./cpu/stall_v2.v
-./cpu/stall_v3.v
 ./lib/dff.v
 ./lib/dffr.v
 ./lib/dffr_a.v

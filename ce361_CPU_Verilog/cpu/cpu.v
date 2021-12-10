@@ -71,6 +71,11 @@ module cpu(clk, pc_ld, pc_data, clockthing);
     // Organize this into the stages
     wire not_ld, not_clk;
 
+    // error wiring
+    wire error1, error2, error3, error4, error5, error6, error;
+    wire [31:0] no_errorpc1, no_errorpc2, no_errorpc3, no_errorpc4;
+    wire [31:0] maybenextpc0, maybenextpc1, maybenextpc2, maybenextpc3;
+
     not_gate flip_clock (.x(clk), .z(not_clk));
     not_gate flip_ld (.x(pc_ld), .z(not_ld));
 
@@ -87,7 +92,16 @@ module cpu(clk, pc_ld, pc_data, clockthing);
     // if NO OP set the PC back 4
 
     // MUX to decide between ipc and epc
-    mux_32 nexpcmux (.src0(IFpc), .src1(MEMpc), .sel(branch_ctrl), .z(nextpc));
+    mux_32 nexpcmux (.src0(IFpc), .src1(MEMpc), .sel(branch_ctrl), .z(maybenextpc0));
+    // Check if there was an error here; update nextpc accordingly
+    mux_32 err1 (.src0(maybenextpc0), .src1(no_errorpc1), .sel(error1), .z(maybenextpc1));
+    mux_32 err2 (.src0(maybenextpc1), .src1(no_errorpc2), .sel(error2), .z(maybenextpc2));
+    mux_32 err3 (.src0(maybenextpc2), .src1(no_errorpc3), .sel(error3), .z(maybenextpc3));
+    mux_32 err4 (.src0(maybenextpc3), .src1(no_errorpc4), .sel(error4), .z(nextpc));
+    or_gate errc1 (.x(error1), .y(error2), .z(error5));
+    or_gate errc2 (.x(error3), .y(error4), .z(error6));
+    or_gate errc3 (.x(error5), .y(error6), .z(error));
+
     // This is PC
     genvar i;
 	generate
@@ -109,7 +123,8 @@ module cpu(clk, pc_ld, pc_data, clockthing);
     mux_32 nexinstrstall (.src1(32'h00410020), .src0(IFinstructiontemp), .sel(stalled2), .z(IFinstruction));
     // END OF STALLING CODE
     // This is the register in between
-    IF_ID_reg iunit_reg (.clk(clk), .pc_in(IFpc), .instr_in(IFinstruction), .pc_out(IDpc), .instr_out(IDinstruction));
+    // ADD HERE
+    IF_ID_reg iunit_reg (.clk(clk), .pc_in(IFpc), .instr_in(IFinstruction), .pc_out(IDpc), .instr_out(IDinstruction), .pcout(no_errorpc1), .errorout(error1), .errorin(error));
 
 // Control (happens during reg/dec stage)
     // wire RegDst, ALUSrc, MemtoReg, RegWrite, MemWrite, ExtOp;
@@ -147,8 +162,10 @@ module cpu(clk, pc_ld, pc_data, clockthing);
     // Reg file
     reg_file registers(.clk(clk), .rw(regmuxout[4:0]), .ra(temp_Rs), .rb(temp_Rt), .we(WRRegWr), .outA(regbusA), .outB(regbusB), .inW(busW));
     // Register in between
+    //ADD HERE
     ID_EX_reg reg_reg(.clk(clk), .pc_in(IDpc), .pc_out(EXpc), .A_in(regbusA), .A_out(execbusA), .B_in(regbusB), .B_out(execbusB), .instr_in(IDinstruction), .instr_out(EXinstruction),
-    .ExtOp_in(ExtOp), .ALUSrc_in(ALUSrc), .ALUOp_in(ALUOp), .RegDst_in(RegDst), .MemWr_in(MemWrite), .Br_in(Branch), .MemtoReg_in(MemtoReg), .RegWr_in(RegWrite), .ExtOp_out(EXExtOp), .ALUSrc_out(EXALUSrc), .ALUOp_out(EXALUOp), .RegDst_out(EXRegDst), .MemWr_out(EXMemWr), .Br_out(EXBranch), .MemtoReg_out(EXMemtoReg), .RegWr_out(EXRegWr));
+    .ExtOp_in(ExtOp), .ALUSrc_in(ALUSrc), .ALUOp_in(ALUOp), .RegDst_in(RegDst), .MemWr_in(MemWrite), .Br_in(Branch), .MemtoReg_in(MemtoReg), .RegWr_in(RegWrite), .ExtOp_out(EXExtOp), .ALUSrc_out(EXALUSrc), .ALUOp_out(EXALUOp), .RegDst_out(EXRegDst), .MemWr_out(EXMemWr), .Br_out(EXBranch), .MemtoReg_out(EXMemtoReg), .RegWr_out(EXRegWr),
+    .pcout(no_errorpc2), .errorout(error2), .errorin(error), .pcin(no_errorpc1));
 
 // Exec Stage
     // wire [31:0] EXpc, EXinstruction, EXres, EXTarget;
@@ -160,8 +177,10 @@ module cpu(clk, pc_ld, pc_data, clockthing);
     // Exec Unit
     execunit eunit (.PC(EXpc), .busA(execbusA), .busB(execbusB), .instr(EXinstruction), .zero(EXzero), .ALUout(EXres), .Target(EXTarget), .ALUop(EXALUOp), .ExtOp(EXExtOp), .ALUSrc(EXALUSrc), .RegDst(EXRegDst), .Regout(EXRegAddr[4:0]));
     // Register
+    // ADD HERE
     EX_MEM_reg ememreg (.clk(clk), .zero_in(EXzero), .zero_out(MEMzero), .res_in(EXres), .res_out(MEMres), .B_in(execbusB), .B_out(MEMbusB), .target_in(EXTarget), .target_out(MEMpc),
-    .MemWr_in(EXMemWr), .Br_in(EXBranch), .MemtoReg_in(EXMemtoReg), .RegWr_in(EXRegWr), .MemWr_out(MEMMemWr), .Br_out(MEMBranch), .MemtoReg_out(MEMMemtoReg), .RegWr_out(MEMRegWr), .regAddr_in(EXRegAddr), .regAddr_out(MEMRegAddr));
+    .MemWr_in(EXMemWr), .Br_in(EXBranch), .MemtoReg_in(EXMemtoReg), .RegWr_in(EXRegWr), .MemWr_out(MEMMemWr), .Br_out(MEMBranch), .MemtoReg_out(MEMMemtoReg), .RegWr_out(MEMRegWr), .regAddr_in(EXRegAddr), .regAddr_out(MEMRegAddr),
+    .pcout(no_errorpc3), .errorout(error3), .errorin(error), .pcin(no_errorpc2));
 
 // Mem Stage
     // wire [31:0] MEMpc, MEMinstruction, MEMres, MEMbusB, MEMDataOut;
@@ -194,7 +213,9 @@ module cpu(clk, pc_ld, pc_data, clockthing);
     not_gate nbone (.x(MEMBranch[1]), .z(nb1));
 
     // Register
-    MEM_WR_reg mwreg (.clk(clk), .mem_in(MEMDataOut), .mem_out(WRDataOut), .B_in(MEMres), .B_out(WRbusB), .regWrAddr_in(MEMRegAddr), .regWrAddr_out(regmuxout), .MemtoReg_in(MEMMemtoReg), .MemtoReg_out(WRMemtoReg), .RegWr_in(MEMRegWr), .RegWr_out(WRRegWr));
+    // ADD HERE
+    MEM_WR_reg mwreg (.clk(clk), .mem_in(MEMDataOut), .mem_out(WRDataOut), .B_in(MEMres), .B_out(WRbusB), .regWrAddr_in(MEMRegAddr), .regWrAddr_out(regmuxout), .MemtoReg_in(MEMMemtoReg), .MemtoReg_out(WRMemtoReg), .RegWr_in(MEMRegWr), .RegWr_out(WRRegWr),
+    .pcout(no_errorpc4), .errorout(error4), .errorin(error), .pcin(no_errorpc3));
 
 // WR stage
     //wire [31:0] busW, WRbusB;

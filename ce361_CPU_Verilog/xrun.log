@@ -1,5 +1,5 @@
 xrun(64): 18.09-s011: (c) Copyright 1995-2019 Cadence Design Systems, Inc.
-TOOL:	xrun(64)	18.09-s011: Started on Dec 10, 2021 at 01:11:36 CST
+TOOL:	xrun(64)	18.09-s011: Started on Dec 10, 2021 at 05:03:41 CST
 xrun
 	-64bit
 	-gui
@@ -53,10 +53,12 @@ xrun
 	./cpu/IF_ID_reg.v
 	./cpu/iunit.v
 	./cpu/MEM_WR_reg.v
+	./cpu/razorflipflop.v
+	./cpu/razor_reg_32.v
+	./cpu/razor_reg_file.v
 	./cpu/reg_32.v
 	./cpu/reg_file.v
 	./cpu/stall_v2.v
-	./cpu/stall_v3.v
 	./lib/dff.v
 	./lib/dffr.v
 	./lib/dffr_a.v
@@ -70,570 +72,633 @@ xrun
 	./extralib/or3to1.v
 	./extralib/sram2.v
 	./extralib/syncram2.v
-file: ./test/cpu_tb_sort.v
-	module worklib.cpu_tb:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/adder_32.v
-	module worklib.adder_32:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/ALUCU.v
-	module worklib.ALUCU:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/ALU.v
-	module worklib.ALU:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/and_gate_32.v
-	module worklib.and_gate_32:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/and_gate_n.v
-	module worklib.and_gate_n:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/and_gate.v
-	module worklib.and_gate:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/dec_n.v
-	module worklib.dec_n:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/full_adder_1bit.v
-	module worklib.full_adder_1bit:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/full_adder_32bit.v
-	module worklib.full_adder_32bit:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/Full_adder.v
-	module worklib.Full_adder:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/mux_32to1.v
-	module worklib.mux_32to1:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/mux_32.v
-	module worklib.mux_32:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/mux8_1_1bit.v
-	module worklib.mux8_1_1bit:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/mux8_1_32bit.v
-	module worklib.mux8_1_32bit:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/mux_n.v
-	module worklib.mux_n:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/mux.v
-	module worklib.mux:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/nand_gate_32.v
-	module worklib.nand_gate_32:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/nand_gate_n.v
-	module worklib.nand_gate_n:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/nand_gate.v
-	module worklib.nand_gate:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/nor_32bit.v
-	module worklib.nor_32bit:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/nor_gate_32.v
-	module worklib.nor_gate_32:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/nor_gate_n.v
-	module worklib.nor_gate_n:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/nor_gate.v
-	module worklib.nor_gate:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/not_gate_32.v
-	module worklib.not_gate_32:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/not_gate_n.v
-	module worklib.not_gate_n:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/not_gate.v
-	module worklib.not_gate:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/or_gate_32.v
-	module worklib.or_gate_32:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/or_gate_n.v
-	module worklib.or_gate_n:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/or_gate.v
-	module worklib.or_gate:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/sll_32bit.v
-	module worklib.sll_32bit:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/SLT_signed.v
-	module worklib.SLT_signed:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/SLT.v
-	module worklib.SLT:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/SUB_32bit.v
-	module worklib.SUB_32bit:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/xnor_gate_32.v
-	module worklib.xnor_gate_32:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/xnor_gate_n.v
-	module worklib.xnor_gate_n:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/xnor_gate.v
-	module worklib.xnor_gate:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/xor_gate_32.v
-	module worklib.xor_gate_32:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/xor_gate_n.v
-	module worklib.xor_gate_n:v
-		errors: 0, warnings: 0
-file: ./ece361_alu_verilog/xor_gate.v
-	module worklib.xor_gate:v
-		errors: 0, warnings: 0
-file: ./cpu/control.v
-	module worklib.control:v
-		errors: 0, warnings: 0
-file: ./cpu/cpu.v
-	module worklib.cpu:v
-		errors: 0, warnings: 0
-file: ./cpu/execunit.v
-	module worklib.execunit:v
-		errors: 0, warnings: 0
-file: ./cpu/EX_MEM_reg.v
-	module worklib.EX_MEM_reg:v
-		errors: 0, warnings: 0
-file: ./cpu/extender.v
-	module worklib.extender:v
-		errors: 0, warnings: 0
-file: ./cpu/ID_EX_reg.v
-	module worklib.ID_EX_reg:v
-		errors: 0, warnings: 0
-file: ./cpu/IF_ID_reg.v
-	module worklib.IF_ID_reg:v
-		errors: 0, warnings: 0
-file: ./cpu/iunit.v
-	module worklib.iunit:v
-		errors: 0, warnings: 0
-file: ./cpu/MEM_WR_reg.v
-	module worklib.MEM_WR_reg:v
-		errors: 0, warnings: 0
-file: ./cpu/reg_32.v
-	module worklib.reg_32:v
-		errors: 0, warnings: 0
-file: ./cpu/reg_file.v
-	module worklib.reg_file:v
-		errors: 0, warnings: 0
-file: ./cpu/stall_v2.v
-	module worklib.stallcheck2:v
-		errors: 0, warnings: 0
-file: ./cpu/stall_v3.v
-	module worklib.stallcheck3:v
-		errors: 0, warnings: 0
-	module worklib.zero_5bit:v
-		errors: 0, warnings: 0
-	module worklib.compare5bit:v
-		errors: 0, warnings: 0
-	module worklib.zero_6bit:v
-		errors: 0, warnings: 0
-	module worklib.compare6bit:v
-		errors: 0, warnings: 0
-	module worklib.zero_32bit:v
-		errors: 0, warnings: 0
-	module worklib.compare32bit:v
-		errors: 0, warnings: 0
-file: ./lib/dff.v
-	module worklib.dff:v
-		errors: 0, warnings: 0
-file: ./lib/dffr.v
-	module worklib.dffr:v
-		errors: 0, warnings: 0
-file: ./lib/dffr_a.v
-	module worklib.dffr_a:v
-		errors: 0, warnings: 0
-file: ./extralib/and3to1.v
-	module worklib.and3to1:v
-		errors: 0, warnings: 0
-file: ./extralib/and6to1.v
-	module worklib.and6to1:v
-		errors: 0, warnings: 0
-file: ./extralib/mux16to1_32.v
-	module worklib.mux16to1_32:v
-		errors: 0, warnings: 0
-file: ./extralib/mux_322.v
-	module worklib.mux_322:v
-		errors: 0, warnings: 0
-file: ./extralib/mux32to1_32.v
-	module worklib.mux32to1_32:v
-		errors: 0, warnings: 0
-file: ./extralib/mux4to1_32.v
-	module worklib.mux4to1_32:v
-		errors: 0, warnings: 0
-file: ./extralib/mux_5.v
-	module worklib.mux_5:v
-		errors: 0, warnings: 0
-file: ./extralib/or3to1.v
-	module worklib.or3to1:v
-		errors: 0, warnings: 0
-file: ./extralib/sram2.v
-        1'h2 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,44|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h3 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,45|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h4 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,46|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h5 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,47|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h6 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,48|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h7 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,49|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h8 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,50|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h9 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,51|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'ha : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,52|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hb : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,53|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hc : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,54|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hd : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,55|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'he : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,56|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hf : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,57|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hA : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,58|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hB : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,59|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hC : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,60|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hD : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,61|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hE : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,62|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hF : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/sram2.v,63|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        initiate();
-                 |
-xmvlog: *W,TMTPAR (./extralib/sram2.v,172|17): A task enable with no arguments must not include an empty set of parentheses [10.2.2 (IEEE Std 1364-2005)].  The compiler has ignored the parentheses.  Use 'xmhelp xmvlog TMTPAR'  for further information.
-        checkRAM();
-                 |
-xmvlog: *W,TMTPAR (./extralib/sram2.v,177|17): A task enable with no arguments must not include an empty set of parentheses [10.2.2 (IEEE Std 1364-2005)].  The compiler has ignored the parentheses.  Use 'xmhelp xmvlog TMTPAR'  for further information.
-	module worklib.sram2:v
-		errors: 0, warnings: 22
-file: ./extralib/syncram2.v
-        1'h2 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,45|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h3 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,46|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h4 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,47|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h5 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,48|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h6 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,49|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h7 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,50|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h8 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,51|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'h9 : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,52|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'ha : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,53|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hb : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,54|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hc : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,55|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hd : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,56|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'he : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,57|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hf : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,58|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hA : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,59|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hB : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,60|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hC : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,61|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hD : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,62|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hE : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,63|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        1'hF : hex = 1;
-           |
-xmvlog: *W,INTOVF (./extralib/syncram2.v,64|11): bit overflow during conversion from text [2.5(IEEE)] (1 bits).
-        initiate();
-                 |
-xmvlog: *W,TMTPAR (./extralib/syncram2.v,172|17): A task enable with no arguments must not include an empty set of parentheses [10.2.2 (IEEE Std 1364-2005)].  The compiler has ignored the parentheses.  Use 'xmhelp xmvlog TMTPAR'  for further information.
-        checkRAM();
-                 |
-xmvlog: *W,TMTPAR (./extralib/syncram2.v,177|17): A task enable with no arguments must not include an empty set of parentheses [10.2.2 (IEEE Std 1364-2005)].  The compiler has ignored the parentheses.  Use 'xmhelp xmvlog TMTPAR'  for further information.
-	module worklib.syncram:v
-		errors: 0, warnings: 22
-		Caching library 'worklib' ....... Done
-	Elaborating the design hierarchy:
-	Top level design units:
-		cpu_tb
-		and_gate_n
-		mux_32to1
-		nand_gate_32
-		nand_gate_n
-		nand_gate
-		nor_gate_32
-		nor_gate_n
-		not_gate_32
-		not_gate_n
-		xnor_gate_32
-		xnor_gate_n
-		xnor_gate
-		xor_gate_32
-		stallcheck3
-		compare5bit
-		compare6bit
-		compare32bit
-		dffr
-		syncram
-              Full_adder msb(.A(a[i]) , .B(b[i]) , .CIN(cout[i-1]) , .SUM(z[i]));
-                           |
-xmelab: *W,CUVWSP (./ece361_alu_verilog/adder_32.v,20|27): 1 output port was not connected:
-xmelab: (./ece361_alu_verilog/Full_adder.v,1): COUT
-
-    or_gate_n twobitor (.x(x[4:3]), .y(x[2:1]), .z(or1));
-                                                     |
-xmelab: *W,CUVMPW (./cpu/stall_v3.v,29|53): port sizes differ in port connection (1/2).
-    or_gate_n eightbitor (.x(x[16:8]), .y(x[7:0]), .z(or2));
-                             |
-xmelab: *W,CUVMPW (./cpu/stall_v3.v,66|29): port sizes differ in port connection (9/8).
-    or_gate_n fourbitor (.x(x[8:4]), .y(x[3:0]), .z(or3));
-                            |
-xmelab: *W,CUVMPW (./cpu/stall_v3.v,68|28): port sizes differ in port connection (5/4).
-	Building instance overlay tables: .................... Done
-	Generating native compiled code:
-		worklib.syncram:v <0x6fb5c15c>
-			streams:  13, words: 14975
-		worklib.dffr:v <0x3c4ee2e8>
-			streams:   2, words:   237
-		worklib.zero_32bit:v <0x4f42bedc>
-			streams:   8, words:  1020
-		worklib.control:v <0x77cdf36a>
-			streams:   2, words:   288
-		worklib.control:v <0x40f8083c>
-			streams:   1, words:   145
-		worklib.xor_gate_32:v <0x32a93d69>
-			streams:   1, words:   132
-		worklib.xnor_gate:v <0x6be9e83e>
-			streams:   0, words:     0
-		worklib.xnor_gate_n:v <0x7536562d>
-			streams:   1, words:   146
-		worklib.xnor_gate_32:v <0x7d416251>
-			streams:   1, words:   138
-		worklib.not_gate_n:v <0x2e9c9b10>
-			streams:   1, words:   124
-		worklib.not_gate_32:v <0x7391cda6>
-			streams:   1, words:   116
-		worklib.nor_gate_n:v <0x17427278>
-			streams:   2, words:   357
-		worklib.nor_gate_32:v <0x33e2e78f>
-			streams:   2, words:   334
-		worklib.nand_gate:v <0x73f0c3b8>
-			streams:   0, words:     0
-		worklib.nand_gate_n:v <0x027683c7>
-			streams:   2, words:   339
-		worklib.nand_gate_32:v <0x0c7edf85>
-			streams:   2, words:   316
-		worklib.and_gate_n:v <0x1e78d7e0>
-			streams:   2, words:   331
-		worklib.mux_322:v <0x4eb39b2d>
-			streams:   2, words:   647
-		worklib.nor_gate:v <0x71e1931c>
-			streams:   0, words:     0
-		worklib.mux_32:v <0x557f409e>
-			streams:   2, words:   565
-		worklib.ALU:v <0x16d2900a>
-			streams:   2, words:   466
-		worklib.extender:v <0x5f84bcbe>
-			streams:   4, words:   502
-		worklib.mux_n:v <0x762e4df9>
-			streams:   2, words:   579
-		worklib.mux_n:v <0x69c3aeff>
-			streams:   2, words:   483
-		worklib.ALUCU:v <0x1b662ae1>
-			streams:   2, words:   942
-		worklib.execunit:v <0x2f8d969e>
-			streams:   4, words:   755
-		worklib.mux16to1_32:v <0x4b94f742>
-			streams:   1, words:   110
-		worklib.mux4to1_32:v <0x5ba0835f>
-			streams:   1, words:   110
-		worklib.mux4to1_32:v <0x5b82c790>
-			streams:   1, words:   110
-		worklib.mux_32:v <0x1121d2e5>
-			streams:   2, words:   499
-		worklib.mux4to1_32:v <0x2e1d010d>
-			streams:   1, words:   110
-		worklib.mux16to1_32:v <0x7501db64>
-			streams:   1, words:   110
-		worklib.mux32to1_32:v <0x08d1cac9>
-			streams:   1, words:   110
-		worklib.and_gate:v <0x6fbd76f9>
-			streams:   0, words:     0
-		worklib.and3to1:v <0x4216df00>
-			streams:   0, words:     0
-		worklib.and3to1:v <0x45905b9c>
-			streams:   0, words:     0
-		worklib.and6to1:v <0x088667c7>
-			streams:   0, words:     0
-		worklib.control:v <0x41fa51ee>
-			streams:   0, words:     0
-		worklib.mux_32:v <0x71e7ca2c>
-			streams:   2, words:   592
-		worklib.mux_5:v <0x13c47ea8>
-			streams:   2, words:   658
-		worklib.or3to1:v <0x6861f798>
-			streams:   0, words:     0
-		worklib.mux:v <0x4e90b5bc>
-			streams:   2, words:   440
-		worklib.mux_32:v <0x7db09662>
-			streams:   2, words:   499
-		worklib.mux_32:v <0x5b0fa21b>
-			streams:   2, words:   554
-		worklib.mux_32:v <0x59281cd0>
-			streams:   2, words:   472
-		worklib.sll_32bit:v <0x479470c7>
-			streams:   3, words:   595
-		worklib.SLT_signed:v <0x681e4ee1>
-			streams:   2, words:   362
-		worklib.SLT:v <0x4f70c794>
-			streams:   2, words:   284
-		worklib.or_gate_32:v <0x0b4d5236>
-			streams:   2, words:   560
-		worklib.nor_32bit:v <0x53ec222f>
-			streams:   2, words:  2842
-		worklib.and_gate_32:v <0x4a8516f7>
-			streams:   2, words:   539
-		worklib.nor_32bit:v <0x60d4959a>
-			streams:   2, words:  2464
-		worklib.ALU:v <0x14c3e113>
-			streams:   2, words:   409
-		worklib.stallcheck2:v <0x7a7a3149>
-			streams:   9, words:  5195
-		worklib.dff:v <0x26086492>
-			streams:   2, words:   316
-		worklib.or_gate:v <0x31f080fc>
-			streams:   0, words:     0
-		worklib.and_gate:v <0x20236131>
-			streams:   0, words:     0
-		worklib.xor_gate:v <0x52b96f7a>
-			streams:   0, words:     0
-		worklib.dffr_a:v <0x7930643a>
-			streams:   2, words:   580
-		worklib.mux_32:v <0x5758fe55>
-			streams:   2, words:   647
-		worklib.not_gate:v <0x242806a5>
-			streams:   0, words:     0
-		worklib.not_gate:v <0x7b42ad76>
-			streams:   0, words:     0
-		worklib.cpu_tb:v <0x6dcc9d9a>
-			streams:   5, words:  2885
-		worklib.cpu:v <0x087c216c>
-			streams:   4, words:   866
-		worklib.iunit:v <0x1845f0ca>
-			streams:   2, words:   398
-		worklib.sram2:v <0x79f8e911>
-			streams:  13, words: 15947
-		worklib.sram2:v <0x2230aa9f>
-			streams:  13, words: 15886
-		worklib.mux_n:v <0x7fe4d884>
-			streams:   2, words:   579
-		worklib.xor_gate_n:v <0x717f6324>
-			streams:   1, words:   224
-		worklib.or_gate_n:v <0x6a3b3c51>
-			streams:   2, words:   741
-		worklib.xor_gate_n:v <0x22b8feaf>
-			streams:   1, words:   224
-		worklib.xor_gate_n:v <0x224a5561>
-			streams:   1, words:   132
-		worklib.or_gate_n:v <0x3b28b0a2>
-			streams:   2, words:   368
-		worklib.or_gate_n:v <0x47e5c16e>
-			streams:   2, words:   362
-		worklib.or_gate_n:v <0x79837988>
-			streams:   2, words:   351
-		worklib.or_gate_n:v <0x3223aedb>
-			streams:   2, words:   509
-		worklib.reg_file:v <0x112eb579>
-			streams:   3, words:   553
-		worklib.dec_n:v <0x658a7d1d>
-			streams:   3, words:  2926
-		worklib.adder_32:v <0x61e9ad80>
-			streams:   0, words:     0
-		worklib.full_adder_32bit:v <0x18bf6070>
-			streams:   0, words:     0
-		worklib.SUB_32bit:v <0x33ceb37f>
-			streams:   0, words:     0
-		worklib.mux_32to1:v <0x17a4c1af>
-			streams:   4, words:  1062
-	Loading native compiled code:     .................... Done
-	Building instance specific data structures.
-	Design hierarchy summary:
-		                 Instances  Unique
-		Modules:             38529      72
-		Registers:            2674      60
-		Scalar wires:        36402       -
-		Expanded wires:       2421     119
-		Vectored wires:        829       -
-		Always blocks:        2603      11
-		Initial blocks:         23      16
-		Cont. assignments:     678      82
-		Pseudo assignments:     24      24
-	Writing initial simulation snapshot: worklib.cpu_tb:v
 
 -------------------------------------
 Relinquished control to SimVision...
 xcelium> 
 xcelium> source /vol/cadence2018/XCELIUM1809/tools/xcelium/files/xmsimrc
-xcelium> ^C
-xcelium> exit
-TOOL:	xrun(64)	18.09-s011: Exiting on Dec 10, 2021 at 01:11:47 CST  (total: 00:00:11)
+xcelium> database -open waves -into waves.shm -default
+Created default SHM database waves
+xcelium> probe -create -shm cpu_tb.clk cpu_tb.clockthing cpu_tb.pc_data cpu_tb.pc_ld cpu_tb.cpu_ut.datamem.mem
+Created probe 1
+xcelium> run
+Now initializing sram
+Addr is written: 00400020
+Data is written: 20021000
+Addr is written: 00400024
+Data is written: 00421400
+Addr is written: 00400028
+Data is written: 20440024
+Addr is written: 0040002c
+Data is written: 20450028
+Addr is written: 00400030
+Data is written: 8c470000
+Addr is written: 00400034
+Data is written: 20430004
+Addr is written: 00400038
+Data is written: 8c610000
+Addr is written: 0040003c
+Data is written: 00e1302a
+Addr is written: 00400040
+Data is written: 1cc00003
+Addr is written: 00400044
+Data is written: ac410000
+Addr is written: 00400048
+Data is written: ac670000
+Addr is written: 0040004c
+Data is written: 00203820
+Addr is written: 00400050
+Data is written: 20630004
+Addr is written: 00400054
+Data is written: 1465fff8
+Addr is written: 00400058
+Data is written: 20420004
+Addr is written: 0040005c
+Data is written: 1444fff4
+Addr is written: 10000000
+Data is written: 00000009
+Addr is written: 10000004
+Data is written: 0000000a
+Addr is written: 10000008
+Data is written: 00000008
+Addr is written: 1000000c
+Data is written: 00000007
+Addr is written: 10000010
+Data is written: 00000005
+Addr is written: 10000014
+Data is written: 00000006
+Addr is written: 10000018
+Data is written: 00000004
+Addr is written: 1000001c
+Data is written: 00000001
+Addr is written: 10000020
+Data is written: 00000002
+Addr is written: 10000024
+Data is written: 00000003
+Addr is checking: 00400020
+Data is checking: 20021000
+Addr is checking: 00400024
+Data is checking: 00421400
+Addr is checking: 00400028
+Data is checking: 20440024
+Addr is checking: 0040002c
+Data is checking: 20450028
+Addr is checking: 00400030
+Data is checking: 8c470000
+Addr is checking: 00400034
+Data is checking: 20430004
+Addr is checking: 00400038
+Data is checking: 8c610000
+Addr is checking: 0040003c
+Data is checking: 00e1302a
+Addr is checking: 00400040
+Data is checking: 1cc00003
+Addr is checking: 00400044
+Data is checking: ac410000
+Addr is checking: 00400048
+Data is checking: ac670000
+Addr is checking: 0040004c
+Data is checking: 00203820
+Addr is checking: 00400050
+Data is checking: 20630004
+Addr is checking: 00400054
+Data is checking: 1465fff8
+Addr is checking: 00400058
+Data is checking: 20420004
+Addr is checking: 0040005c
+Data is checking: 1444fff4
+Addr is checking: 10000000
+Data is checking: 00000009
+Addr is checking: 10000004
+Data is checking: 0000000a
+Addr is checking: 10000008
+Data is checking: 00000008
+Addr is checking: 1000000c
+Data is checking: 00000007
+Addr is checking: 10000010
+Data is checking: 00000005
+Addr is checking: 10000014
+Data is checking: 00000006
+Addr is checking: 10000018
+Data is checking: 00000004
+Addr is checking: 1000001c
+Data is checking: 00000001
+Addr is checking: 10000020
+Data is checking: 00000002
+Addr is checking: 10000024
+Data is checking: 00000003
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Writing to dout:          x
+Now initializing sram
+Addr is written: 00400020
+Data is written: 20021000
+Addr is written: 00400024
+Data is written: 00421400
+Addr is written: 00400028
+Data is written: 20440024
+Addr is written: 0040002c
+Data is written: 20450028
+Addr is written: 00400030
+Data is written: 8c470000
+Addr is written: 00400034
+Data is written: 20430004
+Addr is written: 00400038
+Data is written: 8c610000
+Addr is written: 0040003c
+Data is written: 00e1302a
+Addr is written: 00400040
+Data is written: 1cc00003
+Addr is written: 00400044
+Data is written: ac410000
+Addr is written: 00400048
+Data is written: ac670000
+Addr is written: 0040004c
+Data is written: 00203820
+Addr is written: 00400050
+Data is written: 20630004
+Addr is written: 00400054
+Data is written: 1465fff8
+Addr is written: 00400058
+Data is written: 20420004
+Addr is written: 0040005c
+Data is written: 1444fff4
+Addr is written: 10000000
+Data is written: 00000009
+Addr is written: 10000004
+Data is written: 0000000a
+Addr is written: 10000008
+Data is written: 00000008
+Addr is written: 1000000c
+Data is written: 00000007
+Addr is written: 10000010
+Data is written: 00000005
+Addr is written: 10000014
+Data is written: 00000006
+Addr is written: 10000018
+Data is written: 00000004
+Addr is written: 1000001c
+Data is written: 00000001
+Addr is written: 10000020
+Data is written: 00000002
+Addr is written: 10000024
+Data is written: 00000003
+Addr is checking: 00400020
+Data is checking: 20021000
+Addr is checking: 00400024
+Data is checking: 00421400
+Addr is checking: 00400028
+Data is checking: 20440024
+Addr is checking: 0040002c
+Data is checking: 20450028
+Addr is checking: 00400030
+Data is checking: 8c470000
+Addr is checking: 00400034
+Data is checking: 20430004
+Addr is checking: 00400038
+Data is checking: 8c610000
+Addr is checking: 0040003c
+Data is checking: 00e1302a
+Addr is checking: 00400040
+Data is checking: 1cc00003
+Addr is checking: 00400044
+Data is checking: ac410000
+Addr is checking: 00400048
+Data is checking: ac670000
+Addr is checking: 0040004c
+Data is checking: 00203820
+Addr is checking: 00400050
+Data is checking: 20630004
+Addr is checking: 00400054
+Data is checking: 1465fff8
+Addr is checking: 00400058
+Data is checking: 20420004
+Addr is checking: 0040005c
+Data is checking: 1444fff4
+Addr is checking: 10000000
+Data is checking: 00000009
+Addr is checking: 10000004
+Data is checking: 0000000a
+Addr is checking: 10000008
+Data is checking: 00000008
+Addr is checking: 1000000c
+Data is checking: 00000007
+Addr is checking: 10000010
+Data is checking: 00000005
+Addr is checking: 10000014
+Data is checking: 00000006
+Addr is checking: 10000018
+Data is checking: 00000004
+Addr is checking: 1000001c
+Data is checking: 00000001
+Addr is checking: 10000020
+Data is checking: 00000002
+Addr is checking: 10000024
+Data is checking: 00000003
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Writing to dout:          x
+READ Addr FOUND!: 00400020
+Writing to dout:  537006080
+Writing to dout:  537006080
+Simulation stopped via $stop(1) at time 12540 NS + 0
+xcelium> reset
+Loaded snapshot worklib.cpu_tb:v
+xcelium> run
+Now initializing sram
+Addr is written: 00400020
+Data is written: 20021000
+Addr is written: 00400024
+Data is written: 00421400
+Addr is written: 00400028
+Data is written: 20440024
+Addr is written: 0040002c
+Data is written: 20450028
+Addr is written: 00400030
+Data is written: 8c470000
+Addr is written: 00400034
+Data is written: 20430004
+Addr is written: 00400038
+Data is written: 8c610000
+Addr is written: 0040003c
+Data is written: 00e1302a
+Addr is written: 00400040
+Data is written: 1cc00003
+Addr is written: 00400044
+Data is written: ac410000
+Addr is written: 00400048
+Data is written: ac670000
+Addr is written: 0040004c
+Data is written: 00203820
+Addr is written: 00400050
+Data is written: 20630004
+Addr is written: 00400054
+Data is written: 1465fff8
+Addr is written: 00400058
+Data is written: 20420004
+Addr is written: 0040005c
+Data is written: 1444fff4
+Addr is written: 10000000
+Data is written: 00000009
+Addr is written: 10000004
+Data is written: 0000000a
+Addr is written: 10000008
+Data is written: 00000008
+Addr is written: 1000000c
+Data is written: 00000007
+Addr is written: 10000010
+Data is written: 00000005
+Addr is written: 10000014
+Data is written: 00000006
+Addr is written: 10000018
+Data is written: 00000004
+Addr is written: 1000001c
+Data is written: 00000001
+Addr is written: 10000020
+Data is written: 00000002
+Addr is written: 10000024
+Data is written: 00000003
+Addr is checking: 00400020
+Data is checking: 20021000
+Addr is checking: 00400024
+Data is checking: 00421400
+Addr is checking: 00400028
+Data is checking: 20440024
+Addr is checking: 0040002c
+Data is checking: 20450028
+Addr is checking: 00400030
+Data is checking: 8c470000
+Addr is checking: 00400034
+Data is checking: 20430004
+Addr is checking: 00400038
+Data is checking: 8c610000
+Addr is checking: 0040003c
+Data is checking: 00e1302a
+Addr is checking: 00400040
+Data is checking: 1cc00003
+Addr is checking: 00400044
+Data is checking: ac410000
+Addr is checking: 00400048
+Data is checking: ac670000
+Addr is checking: 0040004c
+Data is checking: 00203820
+Addr is checking: 00400050
+Data is checking: 20630004
+Addr is checking: 00400054
+Data is checking: 1465fff8
+Addr is checking: 00400058
+Data is checking: 20420004
+Addr is checking: 0040005c
+Data is checking: 1444fff4
+Addr is checking: 10000000
+Data is checking: 00000009
+Addr is checking: 10000004
+Data is checking: 0000000a
+Addr is checking: 10000008
+Data is checking: 00000008
+Addr is checking: 1000000c
+Data is checking: 00000007
+Addr is checking: 10000010
+Data is checking: 00000005
+Addr is checking: 10000014
+Data is checking: 00000006
+Addr is checking: 10000018
+Data is checking: 00000004
+Addr is checking: 1000001c
+Data is checking: 00000001
+Addr is checking: 10000020
+Data is checking: 00000002
+Addr is checking: 10000024
+Data is checking: 00000003
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Writing to dout:          x
+Now initializing sram
+Addr is written: 00400020
+Data is written: 20021000
+Addr is written: 00400024
+Data is written: 00421400
+Addr is written: 00400028
+Data is written: 20440024
+Addr is written: 0040002c
+Data is written: 20450028
+Addr is written: 00400030
+Data is written: 8c470000
+Addr is written: 00400034
+Data is written: 20430004
+Addr is written: 00400038
+Data is written: 8c610000
+Addr is written: 0040003c
+Data is written: 00e1302a
+Addr is written: 00400040
+Data is written: 1cc00003
+Addr is written: 00400044
+Data is written: ac410000
+Addr is written: 00400048
+Data is written: ac670000
+Addr is written: 0040004c
+Data is written: 00203820
+Addr is written: 00400050
+Data is written: 20630004
+Addr is written: 00400054
+Data is written: 1465fff8
+Addr is written: 00400058
+Data is written: 20420004
+Addr is written: 0040005c
+Data is written: 1444fff4
+Addr is written: 10000000
+Data is written: 00000009
+Addr is written: 10000004
+Data is written: 0000000a
+Addr is written: 10000008
+Data is written: 00000008
+Addr is written: 1000000c
+Data is written: 00000007
+Addr is written: 10000010
+Data is written: 00000005
+Addr is written: 10000014
+Data is written: 00000006
+Addr is written: 10000018
+Data is written: 00000004
+Addr is written: 1000001c
+Data is written: 00000001
+Addr is written: 10000020
+Data is written: 00000002
+Addr is written: 10000024
+Data is written: 00000003
+Addr is checking: 00400020
+Data is checking: 20021000
+Addr is checking: 00400024
+Data is checking: 00421400
+Addr is checking: 00400028
+Data is checking: 20440024
+Addr is checking: 0040002c
+Data is checking: 20450028
+Addr is checking: 00400030
+Data is checking: 8c470000
+Addr is checking: 00400034
+Data is checking: 20430004
+Addr is checking: 00400038
+Data is checking: 8c610000
+Addr is checking: 0040003c
+Data is checking: 00e1302a
+Addr is checking: 00400040
+Data is checking: 1cc00003
+Addr is checking: 00400044
+Data is checking: ac410000
+Addr is checking: 00400048
+Data is checking: ac670000
+Addr is checking: 0040004c
+Data is checking: 00203820
+Addr is checking: 00400050
+Data is checking: 20630004
+Addr is checking: 00400054
+Data is checking: 1465fff8
+Addr is checking: 00400058
+Data is checking: 20420004
+Addr is checking: 0040005c
+Data is checking: 1444fff4
+Addr is checking: 10000000
+Data is checking: 00000009
+Addr is checking: 10000004
+Data is checking: 0000000a
+Addr is checking: 10000008
+Data is checking: 00000008
+Addr is checking: 1000000c
+Data is checking: 00000007
+Addr is checking: 10000010
+Data is checking: 00000005
+Addr is checking: 10000014
+Data is checking: 00000006
+Addr is checking: 10000018
+Data is checking: 00000004
+Addr is checking: 1000001c
+Data is checking: 00000001
+Addr is checking: 10000020
+Data is checking: 00000002
+Addr is checking: 10000024
+Data is checking: 00000003
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Addr is checking: xxxxxxxx
+Data is checking: xxxxxxxx
+Writing to dout:          x
+READ Addr FOUND!: 00400020
+Writing to dout:  537006080
+Writing to dout:  537006080
+Simulation stopped via $stop(1) at time 12540 NS + 0
+xcelium> 

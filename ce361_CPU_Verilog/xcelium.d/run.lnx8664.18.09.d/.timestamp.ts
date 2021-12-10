@@ -6,6 +6,7 @@
 1638854279 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/full_adder_1bit.v
 1638854279 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/and_gate_32.v
 1638854279 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/lib/dff.v
+1639132231 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/razor_reg_file.v
 1638854279 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/or_gate.v
 1638730784 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/lib/not_gate.v
 1638754670 /home/wsp5700/ce361/361-Project-Two-Group-14/361-Project-Two-Group-14/ce361_CPU_Verilog/extralib/sram2.v
@@ -52,7 +53,7 @@
 1638854279 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/cpu/reg_file.v
 1638730784 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/lib/sram.v
 1638748899 /home/wsp5700/ce361/361-Project-Two-Group-14/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/mux.v
-1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/IF_ID_reg.v
+1639131918 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/IF_ID_reg.v
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/ece361_alu_verilog/mux8_1_32bit.v
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/extralib/sram2.v
 1638854279 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/nor_gate_n.v
@@ -74,15 +75,17 @@
 1638854279 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/SLT.v
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/ece361_alu_verilog/xor_gate_32.v
 1638748899 /home/wsp5700/ce361/361-Project-Two-Group-14/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/mux_32to1.v
-1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/cpu.v
+1639133498 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/cpu.v
 1638854279 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/lib/dffr_a.v
 1638748899 /home/wsp5700/ce361/361-Project-Two-Group-14/361-Project-Two-Group-14/ce361_CPU_Verilog/cpu/IF_ID_reg.v
 1638854279 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/xor_gate_n.v
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/ece361_alu_verilog/nor_gate.v
 1638854279 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/extralib/mux32to1_32.v
+1639134122 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/razorflipflop.v
 1638835963 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/test/alu_tb.v
 1638748899 /home/wsp5700/ce361/361-Project-Two-Group-14/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/mux_32.v
-1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/MEM_WR_reg.v
+1639133459 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/MEM_WR_reg.v
+1639133376 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/razor_reg_32.v
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/ece361_alu_verilog/SLT_signed.v
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/extralib/mux_322.v
 1638854279 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/mux_32.v
@@ -106,8 +109,8 @@
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/stall_v3.v
 1638730784 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/lib/and_gate.v
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/extralib/or3to1.v
+1639133448 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/ID_EX_reg.v
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/stall_v2.v
-1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/ID_EX_reg.v
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/ece361_alu_verilog/or_gate_n.v
 1638730784 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/extralib/nor_gate_n2.v
 1638748899 /home/wsp5700/ce361/361-Project-Two-Group-14/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/xnor_gate.v
@@ -125,8 +128,8 @@
 1638748899 /home/wsp5700/ce361/361-Project-Two-Group-14/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/mux_n.v
 1638748899 /home/wsp5700/ce361/361-Project-Two-Group-14/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/nand_gate_n.v
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/ece361_alu_verilog/full_adder_1bit.v
-1638748899 /home/wsp5700/ce361/361-Project-Two-Group-14/361-Project-Two-Group-14/ce361_CPU_Verilog/cpu/ID_EX_reg.v
 1638748899 /home/wsp5700/ce361/361-Project-Two-Group-14/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/xor_gate_n.v
+1638748899 /home/wsp5700/ce361/361-Project-Two-Group-14/361-Project-Two-Group-14/ce361_CPU_Verilog/cpu/ID_EX_reg.v
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/ece361_alu_verilog/mux8_1_1bit.v
 1638748899 /home/wsp5700/ce361/361-Project-Two-Group-14/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/xnor_gate_32.v
 1638854279 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/or_gate_n.v
@@ -228,8 +231,8 @@
 1638854279 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/nor_32bit.v
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/ece361_alu_verilog/full_adder_32bit.v
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/extender.v
-1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/EX_MEM_reg.v
 1638854279 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/ece361_alu_verilog/mux8_1_1bit.v
+1639133434 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/cpu/EX_MEM_reg.v
 1638730784 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/extralib/not_gate_n2.v
 1638854279 /home/ajm3489/393/ce493ErrorResilient/ce361_CPU_Verilog/ece361_alu_verilog/ALU.v
 1638730784 /home/ajm3489/361/361-Project-Two-Group-14/ce361_CPU_Verilog/lib/dec_n.v
